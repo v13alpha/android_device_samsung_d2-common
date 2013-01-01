@@ -32,14 +32,12 @@ USE_CAMERA_STUB := true
 TARGET_KERNEL_SOURCE        := kernel/samsung/d2
 BOARD_KERNEL_CMDLINE        := androidboot.hardware=qcom user_debug=31 zcache
 BOARD_KERNEL_BASE           := 0x80200000
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01300000
+BOARD_MKBOOTIMG_ARGS        := --ramdisk_offset 0x01300000
 BOARD_KERNEL_PAGESIZE       := 2048
 
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
 # Recovery
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/d2-common/recovery/recovery_keys.c
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
@@ -59,11 +57,6 @@ BOARD_BLUEDROID_VENDOR_CONF := device/samsung/d2-common/bluetooth/vnd_d2.txt
 
 # Disable initlogo, Samsungs framebuffer is weird
 TARGET_NO_INITLOGO := true
-
-# HAX
-#BOARD_USE_SAMSUNG_SEPARATEDSTREAM := true
-#BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
-#TARGET_PROVIDES_LIBAUDIO := true
 
 # Use Audience A2220 chip
 BOARD_HAVE_AUDIENCE_A2220 := true

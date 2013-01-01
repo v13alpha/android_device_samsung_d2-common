@@ -26,10 +26,6 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/d2-common/overlay
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-# Boot animation
-TARGET_SCREEN_HEIGHT := 1280
-TARGET_SCREEN_WIDTH := 720
-
 # Audio configuration
 PRODUCT_COPY_FILES += \
         device/samsung/d2-common/audio/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
@@ -57,20 +53,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libnetcmdiface
 
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
 # Lights
 PRODUCT_PACKAGES += lights.msm8960
-
-# Increase the HWUI font cache since we have tons of RAM
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hwui.text_cache_width=2048
-
-# QC Perf
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 # QRNGD
 PRODUCT_PACKAGES += qrngd
@@ -79,8 +63,11 @@ PRODUCT_PACKAGES += qrngd
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.hsxpa=1 \
     ro.ril.gprsclass=10 \
+    persist.sys.usb.config=mtp \
+    ro.hwui.text_cache_width=2048 \
     persist.radio.add_power_save=1 \
     persist.radio.snapshot_disabled=1 \
+    ro.vendor.extension_library=/system/lib/libqc-opt.so \
     com.qc.hardware=true \
     persist.radio.apm_sim_not_pwdn=1 \
     ro.telephony.call_ring.multiple=0 \
@@ -104,12 +91,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.no_wait_for_card=1 \
     keyguard.no_require_sim=true
 
-# Workaround for MDP underrun issue with 4-layer composition
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.mdpcomp.maxlayer=3
-
 # common msm8960
 $(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
-
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
