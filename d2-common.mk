@@ -84,7 +84,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.emmc.sdcard.partition=17 \
     ro.use_data_netmgrd=true \
     persist.data_netmgrd_nint=16 \
-    ro.config.vc_call_vol_steps=7 \
     lpa.decode=true \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM \

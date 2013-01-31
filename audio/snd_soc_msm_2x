@@ -3739,7 +3739,7 @@ SectionDevice
 	DisableSequence
 	EndSequence
 
-	ACDBID	0:1
+	ACDBID	10:1
 	EffectsMixerCTL "SRS TruMedia"
 
 EndSection
@@ -6562,3 +6562,4 @@ SectionModifier
 EndSection
 
 # End of master file
+
