@@ -21,19 +21,19 @@ USE_CAMERA_STUB := true
 -include device/samsung/msm8960-common/BoardConfigCommon.mk
 
 # Kernel
-TARGET_KERNEL_SOURCE        := kernel/samsung/d2
-BOARD_KERNEL_CMDLINE        := androidboot.hardware=qcom user_debug=31 zcache
-BOARD_KERNEL_BASE           := 0x80200000
-BOARD_MKBOOTIMG_ARGS        := --ramdisk_offset 0x01300000
-BOARD_KERNEL_PAGESIZE       := 2048
-
-TARGET_BOOTLOADER_BOARD_NAME := MSM8960
+TARGET_KERNEL_SOURCE           := kernel/samsung/d2
+BOARD_KERNEL_CMDLINE           := androidboot.hardware=qcom user_debug=31 zcache
+BOARD_KERNEL_BASE              := 0x80200000
+BOARD_MKBOOTIMG_ARGS           := --ramdisk_offset 0x01300000
+BOARD_KERNEL_PAGESIZE          := 2048
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.6
 
 # Recovery
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 TARGET_RECOVERY_FSTAB := device/samsung/d2-common/recovery.fstab
 
 TARGET_USERIMAGES_USE_EXT4 := true
