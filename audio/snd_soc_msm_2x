@@ -3175,10 +3175,10 @@ SectionDevice
         'PRI_TX Channels':0:Two
         'SLIM TX7 MUX':0:DEC3
         'DEC3 MUX':0:ADC4
-        'ADC4 Volume':1:100
+        'ADC4 Volume':1:125
         'SLIM TX8 MUX':0:DEC4
         'DEC4 MUX':0:ADC3
-        'ADC3 Volume':1:100
+        'ADC3 Volume':1:300
         'MICBIAS1 CAPLESS Switch':1:1
     EndSequence
 
