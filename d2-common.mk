@@ -73,7 +73,8 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    libnetcmdiface
+    libnetcmdiface \
+    macloader
 
 # Lights
 PRODUCT_PACKAGES += lights.msm8960
