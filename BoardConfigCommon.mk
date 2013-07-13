@@ -28,7 +28,10 @@ BOARD_KERNEL_CMDLINE           := androidboot.hardware=qcom user_debug=31 zcache
 BOARD_KERNEL_BASE              := 0x80200000
 BOARD_MKBOOTIMG_ARGS           := --ramdisk_offset 0x01300000
 BOARD_KERNEL_PAGESIZE          := 2048
+TARGET_KERNEL_SELINUX_CONFIG   := m2selinux_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.6
+
+TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
 # Recovery
 BOARD_USES_MMCUTILS := true
