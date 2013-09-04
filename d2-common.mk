@@ -22,18 +22,21 @@ $(call inherit-product-if-exists, vendor/samsung/d2-common/d2-common-vendor.mk)
 ## overlays
 DEVICE_PACKAGE_OVERLAYS += device/samsung/d2-common/overlay
 
+ifneq ($(VARIENT_MODEL),expressatt)
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
+endif
 
 # Boot animation
 
-ifneq ($(VARIENT_MODEL),apexqtmo)
-## apexq merge colusion
+ifeq ($(filter apexqtmo expressatt,$(VARIENT_MODEL)),)
+## merge colusion
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=320
 endif
+
 # Audio configuration
 PRODUCT_COPY_FILES += \
         device/samsung/d2-common/audio/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x \
@@ -72,10 +75,6 @@ PRODUCT_COPY_FILES += \
 
 # Torch
 PRODUCT_PACKAGES += Torch
-
-# Vold configuration
-PRODUCT_COPY_FILES += \
-    device/samsung/d2-common/vold.fstab:system/etc/vold.fstab
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -120,7 +119,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=true \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM \
-    ro.config.svlte1x=true \
+    ro.ril.svdo=true \
     ro.cdma.subscribe_on_ruim_ready=true \
     persist.radio.no_wait_for_card=0 \
     keyguard.no_require_sim=true \
@@ -142,6 +141,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.fluencetype=fluence
 endif
 
+# enable repeatable keys in cwm
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.cwm.enable_key_repeat=true \
+    ro.cwm.repeatable_keys=114,115
+
 # NFC Support
 PRODUCT_PACKAGES += \
     libnfc \
@@ -162,5 +166,10 @@ PRODUCT_COPY_FILES += \
 # common msm8960
 $(call inherit-product, device/samsung/msm8960-common/msm8960.mk)
 
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+ifeq ($(filter apexqtmo expressatt,$(VARIENT_MODEL)),)
+    $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+else
+    $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+endif
+
 
