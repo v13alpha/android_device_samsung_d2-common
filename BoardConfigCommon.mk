@@ -26,6 +26,7 @@
 TARGET_SPECIFIC_HEADER_PATH := device/samsung/d2-common/include
 
 # Kernel
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.8
 TARGET_KERNEL_SOURCE        := kernel/samsung/d2
 BOARD_KERNEL_CMDLINE        := androidboot.hardware=qcom user_debug=31 zcache
 BOARD_KERNEL_BASE           := 0x80200000
